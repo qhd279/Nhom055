@@ -1,0 +1,68 @@
+.manage-rooms-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 300px;
+}
+
+.room-card {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  position: relative;
+}
+
+.room-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1890ff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  margin: 0 auto 10px;
+  font-size: 24px;
+}
+
+.room-title {
+  margin-bottom: 10px;
+  color: #1890ff;
+}
+
+.room-details {
+  margin: 0;
+  font-size: 14px;
+}
+
+.admin-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+}
+.custom-modal .ant-modal {
+  height: 600px !important;
+  max-height: none !important; 
+}
+

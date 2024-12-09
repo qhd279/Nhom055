@@ -1,0 +1,140 @@
+.room-details {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.computer-list {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* Hiển thị 10 thẻ mỗi hàng */
+  gap: 10px; /* Khoảng cách giữa các thẻ */
+  max-height: 410px; /* Điều chỉnh chiều cao của container nếu cần */
+  overflow-y: auto; /* Cho phép cuộn dọc nếu thẻ vượt quá chiều cao */
+}
+
+.computer-card {
+  position: relative; /* Đặt thẻ card ở vị trí tương đối để menu icon có thể được đặt tuyệt đối */
+  height: 60px; /* Chiều cao của thẻ */
+  background-color: #1890ff; /* Màu nền mặc định */
+  color: white;
+  border-radius: 8px; /* Bo góc thẻ */
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s; /* Hiệu ứng chuyển động */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+}
+
+.menu-icon {
+  position: absolute; /* Đặt menu icon ở vị trí tuyệt đối trong thẻ card */
+  top: -8px; /* Đặt icon cách phía trên 10px */
+  right: 0px; /* Đặt icon cách bên phải 10px */
+  font-size: 18px; /* Điều chỉnh kích thước icon nếu cần */
+  cursor: pointer; /* Đổi con trỏ khi hover */
+  padding-top: 2px; 
+  padding-right: 8px;   
+  padding-bottom: 8px; 
+  padding-left: 8px; 
+}
+
+
+.computer-card.active {
+  background-color: #1890ff; /* Màu khi thẻ đang hoạt động */
+}
+
+.computer-card.issue {
+  background-color: #f44336; /* Màu khi có sự cố */
+}
+
+.computer-card.installing {
+  background-color: orange; /* Màu khi cài đặt */
+}
+
+.computer-card:hover {
+  filter: brightness(1.2); /* Làm nền sáng hơn khi hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ khi hover */
+}
+
+.computer-name {
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+}
+
+.computer-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.status {
+  font-weight: bold;
+  margin-left: 10px; /* Khoảng cách giữa tên và trạng thái */
+}
+
+.device-item,
+.software-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.device-section,
+.software-section {
+  margin: 0;
+}
+
+.status {
+  font-weight: bold;
+  margin-left: 10px; /* Khoảng cách giữa tên và trạng thái */
+}
+
+.status.active {
+  color: #4caf50; /* Màu xanh cho trạng thái hoạt động */
+}
+
+.status.issue {
+  color: red; /* Màu đỏ cho sự cố */
+}
+
+.status.installing {
+  color: orange; /* Màu vàng cho cài đặt */
+}
+
+  .status.unknown {
+    color: orangered; /* Màu vàng cho cài đặt */
+  }
+
+/* Dropdown Menu Container 
+.dropdown-menu {
+  position: relative;
+  color: white;
+  border-radius: 8px;
+}
+
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  bottom: -20%;
+  left: 75%; 
+  transform: translateX(-50%); 
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent; 
+  border-right: 10px solid transparent; 
+  
+  border-top: 12px solid white; Tăng kích thước tam giác và giữ nguyên màu 
+}
+*/
+
+

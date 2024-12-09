@@ -1,0 +1,41 @@
+/* styles/ManageUsers.css */
+.role-admin {
+    color: #52c41a; /* Màu xanh lá cho Admin */
+    border: 1px solid #52c41a; /* Viền xanh lá */
+    background-color: rgba(82, 196, 26, 0.1); /* Nền trong suốt với màu xanh lá */
+    padding: 2px 8px; /* Padding để có khoảng cách */
+    border-radius: 4px; /* Bo góc */
+}
+
+.role-teacher {
+    color: #1890ff; /* Màu xanh dương cho Teacher */
+    border: 1px solid #1890ff; /* Viền xanh dương */
+    background-color: rgba(24, 144, 255, 0.1); /* Nền trong suốt với màu xanh dương */
+    padding: 2px 8px; /* Padding để có khoảng cách */
+    border-radius: 4px; /* Bo góc */
+}
+
+.role-support {
+    color: #fa8c16; /* Màu cam cho Support */
+    border: 1px solid #fa8c16; /* Viền cam */
+    background-color: rgba(250, 140, 22, 0.1); /* Nền trong suốt với màu cam */
+    padding: 2px 8px; /* Padding để có khoảng cách */
+    border-radius: 4px; /* Bo góc */
+}
+
+/* Định nghĩa cho trạng thái */
+.status-active {
+    color: #52c41a; /* Màu xanh lá cho Active */
+    border: 1px solid #52c41a; /* Viền xanh lá */
+    background-color: rgba(82, 196, 26, 0.1); /* Nền trong suốt với màu xanh lá */
+    padding: 2px 8px; /* Padding để có khoảng cách */
+    border-radius: 4px; /* Bo góc */
+}
+
+.status-deactive {
+    color: #ff4d4f; /* Màu đỏ cho Deactive */
+    border: 1px solid #ff4d4f; /* Viền đỏ */
+    background-color: rgba(255, 77, 79, 0.1); /* Nền trong suốt với màu đỏ */
+    padding: 2px 8px; /* Padding để có khoảng cách */
+    border-radius: 4px; /* Bo góc */
+}
