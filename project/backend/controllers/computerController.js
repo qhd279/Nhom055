@@ -102,7 +102,7 @@ exports.getAllComputersByRoomId = async (req, res) => {
         const computersWithStatus = computers.reduce((acc, row) => {
             const computerId = row.computer_id;
 
-
+            // Initialize computer object if not already present
             if (!acc[computerId]) {
                 acc[computerId] = {
                     computer_id: row.computer_id,
@@ -113,9 +113,10 @@ exports.getAllComputersByRoomId = async (req, res) => {
                 };
             }
 
-
+            // Handle devices: Ensure no duplicates in devices list
             if (row.device_id) {
-                if (!acc[computerId].devices.some(device => device.device_id === row.device_id)) {
+                const existingDevice = acc[computerId].devices.find(device => device.device_id === row.device_id);
+                if (!existingDevice) {
                     acc[computerId].devices.push({
                         device_id: row.device_id,
                         device_name: row.device_name,
@@ -125,7 +126,7 @@ exports.getAllComputersByRoomId = async (req, res) => {
                     });
                 }
 
-
+                // Update computer status based on device status
                 if (row.device_status === 'installing') {
                     acc[computerId].status = 'installing';
                 } else if (row.device_status !== 'active') {
@@ -133,13 +134,15 @@ exports.getAllComputersByRoomId = async (req, res) => {
                 }
             }
 
+            // Handle software: Ensure no duplicates in software list
             if (row.software_id) {
-                if (!acc[computerId].software.some(software => software.software_id === row.software_id)) {
+                const existingSoftware = acc[computerId].software.find(software => software.software_id === row.software_id);
+                if (!existingSoftware) {
                     acc[computerId].software.push({
                         software_id: row.software_id,
                         software_name: row.software_name,
                         status: row.software_status,
-                        computer_software_id: row.computer_software_id // Include computer_software_id
+                        computer_software_id: row.computer_software_id
                     });
                 }
 
@@ -154,6 +157,7 @@ exports.getAllComputersByRoomId = async (req, res) => {
             return acc;
         }, {});
 
+        // Convert the object back into an array
         const result = Object.values(computersWithStatus);
         res.status(200).json(result);
     } catch (error) {
@@ -161,6 +165,7 @@ exports.getAllComputersByRoomId = async (req, res) => {
         res.status(500).json({ error: 'Có lỗi xảy ra', details: error.message });
     }
 };
+
 exports.updateDeviceAndSoftwareStatus = async (req, res) => {
     const { computer_id, devices, software } = req.body;
 

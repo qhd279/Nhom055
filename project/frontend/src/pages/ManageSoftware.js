@@ -157,7 +157,7 @@ const ManageSoftware = () => {
               <Button
                 icon={<DeleteOutlined style={{ color: '#ff4d4f' }} />}
                 onClick={() => handleDelete(record.software_id)}
-                style={{ background: 'transparent', border: 'none' }}
+                style={{ background: 'transparent', border: 'none' , display: 'none'}}
               />
             </span>
           )}

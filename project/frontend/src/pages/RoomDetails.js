@@ -168,7 +168,7 @@ const RoomDetails = () => {
           <span style={{ display: 'inline-block', width: '20px', height: '20px', backgroundColor: '#f44336', margin: '0 8px' }}></span>
           Máy tính gặp sự cố
           <span style={{ display: 'inline-block', width: '20px', height: '20px', backgroundColor: "orange", margin: '0 8px' }}></span>
-          Đang cài đặt
+          Không có trong phòng
         </div>
   
         {userRole === 'admin' && (

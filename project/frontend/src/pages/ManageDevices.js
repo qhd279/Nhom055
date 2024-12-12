@@ -153,7 +153,8 @@ const ManageDevices = () => {
               <Button
                 icon={<DeleteOutlined style={{ color: '#ff4d4f' }} />}
                 onClick={() => handleDelete(record.device_id)}
-                style={{ background: 'transparent', border: 'none' }}
+                style={{ background: 'transparent', border: 'none' , display: 'none' }}
+                
               />
             </span>
           )}

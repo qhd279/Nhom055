@@ -50,7 +50,7 @@ const Statistics = () => {
     <div style={{ padding: '10px' }}>
       <StatisticsReport reports={reports} />
       <StatisticsSupport reports={reports} />;
-      <StatisticsSupport2 reports={reports} />;
+      
 
       <StatisticsDevice />
     </div>

@@ -315,7 +315,7 @@ const ManageRooms = () => {
                   <strong>Số Lượng Máy:</strong> {room.computer_count}
                 </p>
                 <p style={{ margin: '0', fontSize: '14px' }}>
-                  <strong>Người Hỗ Trợ:</strong> {room.support_person}
+                  <strong>Kỹ thuật viên:</strong> {room.support_person}
                 </p>
                 <div style={{
                   position: 'absolute',
@@ -342,6 +342,7 @@ const ManageRooms = () => {
                     }}
                     size="small"
                     shape="circle"
+                     style={{display: 'none'}}
                   />
                 </div>
               </Card>
@@ -376,11 +377,11 @@ const ManageRooms = () => {
           </Form.Item>
 
           <Form.Item
-            label="Người Hỗ Trợ"
+            label="Kỹ thuật viên"
             name="user_id"
-            rules={[{ required: true, message: 'Vui lòng chọn người hỗ trợ!' }]}
+            rules={[{ required: true, message: 'Vui lòng chọn kỹ thuật viên!' }]}
           >
-            <Select placeholder="Chọn người hỗ trợ">
+            <Select placeholder="Chọn kỹ thuật viên">
               {supportPersons.map((person) => (
                 <Option key={person.id} value={person.id}>
                   {person.fullname}

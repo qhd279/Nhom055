@@ -181,7 +181,7 @@ const ReportDetailsModal = ({ report, isVisible, onClose, isAdmin }) => {
             disabled={!isEditable}
           />
           
-          <p><strong>Người phụ trách:</strong></p>
+          <p><strong>Kỹ thuật viên:</strong></p>
           <Select
             value={selectedSupport}
             onChange={handleSupportChange}
