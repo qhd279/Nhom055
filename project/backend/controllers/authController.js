@@ -23,7 +23,7 @@ exports.login = (req, res) => {
         }
 
         // Tạo token
-        const token = jwt.sign({ id: user.id, role: user.role }, secret, { expiresIn: '7d' });
+        const token = jwt.sign({ id: user.id, role: user.role , fullname: user.fullname}, secret/*, { expiresIn: '7d' }*/);
         res.json({ token });
     });
 };

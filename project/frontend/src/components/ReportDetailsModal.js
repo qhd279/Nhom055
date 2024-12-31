@@ -179,6 +179,10 @@ const ReportDetailsModal = ({ report, isVisible, onClose, isAdmin }) => {
             onChange={handleDateChange}
             style={{ marginBottom: '16px', width: '100%' }}
             disabled={!isEditable}
+            disabledDate={(current) => {
+              // Vô hiệu hóa các ngày nhỏ hơn ngày hiện tại
+              return current && current < new Date();
+            }}
           />
           
           <p><strong>Kỹ thuật viên:</strong></p>

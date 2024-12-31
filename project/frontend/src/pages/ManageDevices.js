@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Button, Modal, Form, Input, InputNumber } from 'antd';
 import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
-import { toast, ToastContainer  } from 'react-toastify'; 
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
@@ -10,8 +10,8 @@ const ManageDevices = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [currentDevice, setCurrentDevice] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [searchTerm, setSearchTerm] = useState(''); 
-  const [form] = Form.useForm(); 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [form] = Form.useForm();
 
   const fetchDevices = async () => {
     const token = localStorage.getItem('token');
@@ -39,7 +39,7 @@ const ManageDevices = () => {
 
   const showEditModal = (device) => {
     setCurrentDevice(device);
-    form.setFieldsValue(device); 
+    form.setFieldsValue(device);
     setIsModalVisible(true);
   };
 
@@ -52,7 +52,7 @@ const ManageDevices = () => {
         },
       });
       toast.success('Xóa thiết bị thành công!');
-      fetchDevices(); 
+      fetchDevices();
     } catch (error) {
       console.error('Error deleting device:', error.message);
     }
@@ -62,41 +62,41 @@ const ManageDevices = () => {
     const token = localStorage.getItem('token');
     try {
       if (currentDevice) {
-        
+
         await axios.put(`http://localhost:5000/api/devices/${currentDevice.device_id}`, values, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        toast.success('Cập nhật thiết bị thành công!'); 
+        toast.success('Cập nhật thiết bị thành công!');
       } else {
-        
+
         await axios.post('http://localhost:5000/api/devices', values, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        toast.success('Thêm thiết bị thành công!'); 
+        toast.success('Thêm thiết bị thành công!');
       }
-      fetchDevices(); 
+      fetchDevices();
       setIsModalVisible(false);
       setCurrentDevice(null);
-      form.resetFields(); 
+      form.resetFields();
     } catch (error) {
       console.error('Error saving device:', error.message);
-      toast.error(`Có lỗi xảy ra: ${error.message}`); 
+      toast.error(`Có lỗi xảy ra: ${error.message}`);
     }
   };
 
   const handleModalCancel = () => {
     setIsModalVisible(false);
     setCurrentDevice(null);
-    form.resetFields(); 
+    form.resetFields();
   };
 
   const handleAddDevice = () => {
     setCurrentDevice(null);
-    form.resetFields(); 
+    form.resetFields();
     setIsModalVisible(true);
   };
 
@@ -115,28 +115,28 @@ const ManageDevices = () => {
     <div>
       <h2>Danh Sách Thiết Bị</h2>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
-        
+
         <Input
           placeholder="Tìm kiếm thiết bị "
           value={searchTerm}
           onChange={handleSearch}
           style={{ width: '300px' }}
         />
-        
+
         <Button
           type="primary"
           icon={<PlusOutlined />}
           onClick={handleAddDevice}
-          style={{ marginLeft: 'auto' }} 
+          style={{ marginLeft: 'auto' }}
         >
           Thêm Thiết Bị
         </Button>
       </div>
 
-      
+
       <Table dataSource={filteredDevices} rowKey="device_id" loading={loading} pagination={{
-          pageSize: 5, 
-        }}>
+        pageSize: 5,
+      }}>
         <Table.Column title="ID" dataIndex="device_id" />
         <Table.Column title="Tên Thiết Bị" dataIndex="device_name" />
         <Table.Column title="Loại Thiết Bị" dataIndex="device_type" />
@@ -153,8 +153,8 @@ const ManageDevices = () => {
               <Button
                 icon={<DeleteOutlined style={{ color: '#ff4d4f' }} />}
                 onClick={() => handleDelete(record.device_id)}
-                style={{ background: 'transparent', border: 'none' , display: 'none' }}
-                
+                style={{ background: 'transparent', border: 'none', display: 'none' }}
+
               />
             </span>
           )}
@@ -190,9 +190,13 @@ const ManageDevices = () => {
           <Form.Item
             name="quantity"
             label="Số Lượng"
-            rules={[{ required: true, message: 'Vui lòng nhập số lượng' }]}
+            rules={[
+              { required: true, message: 'Vui lòng nhập số lượng' },
+              { validator: (_, value) => value < 1 ? Promise.reject('Số lượng không được nhỏ hơn 1') : Promise.resolve() }
+            ]}
+            validateTrigger="onBlur"
           >
-            <InputNumber min={1} style={{ width: '100%' }} />
+            <InputNumber style={{ width: '100%' }} />
           </Form.Item>
           <Form.Item style={{ textAlign: 'right' }}>
             <Button type="primary" htmlType="submit">

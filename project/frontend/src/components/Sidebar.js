@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Typography } from 'antd';
 import {
   UserOutlined,
   DashboardOutlined,
@@ -13,6 +13,7 @@ import {
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const { Sider } = Layout;
+const { Text } = Typography;  // For displaying role text
 
 const Sidebar = ({ role, setIsAuthenticated, setUserRole }) => {
   const navigate = useNavigate();
@@ -81,7 +82,7 @@ const Sidebar = ({ role, setIsAuthenticated, setUserRole }) => {
     if (role === 'support') {
       return [
         ...baseItems,
-        { key: '/manage-tasks', icon: <FileTextOutlined />, label: 'Quản lý công việc', onClick: () => handleMenuClick('/manage-tasks') }, // Updated to "Quản lý công việc"
+        { key: '/manage-tasks', icon: <FileTextOutlined />, label: 'Xem công việc', onClick: () => handleMenuClick('/manage-tasks') }, // Updated to "Quản lý công việc"
         { key: '/repair-history', icon: <SettingOutlined />, label: 'Lịch sử sửa chữa', onClick: () => handleMenuClick('/repair-history') },
         { key: '/profile', icon: <UserOutlined />, label: 'Xem thông tin', onClick: () => handleMenuClick('/profile') },
         { key: '/change-password', icon: <SettingOutlined />, label: 'Đổi mật khẩu', onClick: () => handleMenuClick('/change-password') },
@@ -96,6 +97,13 @@ const Sidebar = ({ role, setIsAuthenticated, setUserRole }) => {
     <Sider style={{ height: '100vh', position: 'fixed', left: 0, top: 0, bottom: 0, padding: '0' }}>
       <div style={{ padding: '20px', textAlign: 'center' }}>
         <img src="logo2.png" alt="Logo" style={{ width: '100%', height: 'auto' }} />
+        {/* <Text style={{ color: 'white', marginTop: '10px', display: 'block' }}>
+             {role === 'admin' ? 'Quản trị viên' :
+              role === 'teacher' ? 'Giảng viên' :
+              role === 'support' ? 'Kỹ thuật viên' :
+              'Chưa xác định'}
+            </Text> */}
+
       </div>
       <Menu
         theme="dark"

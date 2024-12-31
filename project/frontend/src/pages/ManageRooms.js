@@ -252,12 +252,15 @@ const ManageRooms = () => {
     setSearchTerm(e.target.value);
   };
 
-  const filteredRooms = rooms.filter(
+  const filteredRooms = rooms
+  .filter(
     (room) =>
       room.room_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    room.support_person.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      room.support_person.toLowerCase().includes(searchTerm.toLowerCase()) ||
       room.room_id.toString().includes(searchTerm)
-  );
+  )
+  .sort((a, b) => a.room_name.localeCompare(b.room_name));  // Sort by room name alphabetically
+
 
   return (
     <div>

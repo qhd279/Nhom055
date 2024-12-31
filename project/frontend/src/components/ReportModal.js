@@ -179,6 +179,9 @@ const ReportModal = ({
       bodyStyle={{ padding: '20px', fontSize: '16px' }}
     >
       <div>
+      {selectedDevices.length === 0 && selectedSoftware.length ===0 &&(
+          <div>Mô tả: Máy không hoạt động</div>
+        )}
         {selectedDevices.length > 0 && (
           <>
             <h4>Thiết bị đã chọn:</h4>
@@ -260,6 +263,10 @@ const ReportModal = ({
           style={{ width: '100%' }}
           onChange={(date, dateString) => setCompletionDate(dateString)}
           placeholder="Chọn ngày sửa xong mong muốn"
+          disabledDate={(current) => {
+            // Vô hiệu hóa các ngày nhỏ hơn ngày hiện tại
+            return current && current < new Date();
+          }}
         />
       </div>
     </Modal>
